@@ -1,5 +1,5 @@
 # Shortcuts
-alias copyssh="pbcopy < $HOME/.ssh/id_ed25519.pub"
+alias copyssh="pbcopy < $HOME/.ssh/id_rsa.pub"
 alias reloadshell="source $HOME/.zshrc"
 alias reloaddns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
 alias ll="/opt/homebrew/opt/coreutils/libexec/gnubin/ls -AhlFo --color --group-directories-first"
@@ -12,8 +12,8 @@ alias version="commit 'version'"
 # Directories
 alias dotfiles="cd $DOTFILES"
 alias library="cd $HOME/Library"
-alias sites="cd $HOME/Sites"
-alias lara="sites && cd laravel/"
+alias code="cd $HOME/Code"
+alias lara="code && cd z-laravel/"
 alias docs="lara && cd docs/"
 
 # Laravel
@@ -52,3 +52,42 @@ alias resolve="git add . && git commit --no-edit"
 alias stash="git stash -u"
 alias unstage="git restore --staged ."
 alias wip="commit wip"
+
+# PHPunit
+alias phpunit="./vendor/bin/phpunit"
+alias test="./vendor/bin/phpunit"
+alias coverage="./vendor/bin/phpunit --coverage-html=build/html"
+
+# Server
+alias linode="ssh forge@172.104.153.123"
+alias hetzner="ssh forge@88.198.226.165"
+
+# Use valet instead of ddev
+use-valet() {
+  ddev poweroff
+  valet start
+  valet use --force php
+}
+
+# Use ddev instead of valet
+use-ddev() {
+  valet stop
+  ddev start
+}
+
+# Switch php versions
+installedPhpVersions=($(brew ls --versions | ggrep -E 'php(@.*)?\s' | ggrep -oP '(?<=\s)\d\.\d' | uniq | sort))
+
+for phpVersion in ${installedPhpVersions[*]}; do
+    value="{"
+
+    for otherPhpVersion in ${installedPhpVersions[*]}; do
+        if [ "${otherPhpVersion}" != "${phpVersion}" ]; then
+            value="${value} brew unlink php@${otherPhpVersion};"
+        fi
+    done
+
+    value="${value} brew link php@${phpVersion} --force --overwrite; } &> /dev/null && php -v"
+
+    alias "${phpVersion}"="${value}"
+done
