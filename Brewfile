@@ -5,6 +5,7 @@ tap 'homebrew/cask-versions'
 tap 'homebrew/bundle'
 tap 'nicoverbruggen/homebrew-cask'
 tap 'stripe/stripe-cli'
+tap 'shivammathur/php'
 
 # Binaries
 brew 'awscli'
@@ -32,8 +33,11 @@ brew 'gifsicle'
 
 # Development
 brew 'php'
-brew 'php@8.0'
+brew 'php@8.1'
 brew 'php@7.4'
+brew 'shivammathur/php/php@7.1'
+brew 'shivammathur/php/php@8.0'
+brew 'shivammathur/php/php@5.6'
 brew 'composer'
 brew 'imagemagick'
 brew 'meilisearch'
@@ -45,21 +49,28 @@ brew 'yarn'
 
 # Apps
 cask '1password'
+cask 'alfred'
+cask 'bartender'
 cask 'caffeine'
+cask 'cleanmymac'
+cask 'clockify'
 cask 'dbngin'
 cask 'discord'
 cask 'docker'
+cask 'evernote'
 cask 'figma'
 cask 'firefox'
 cask 'github'
 cask 'google-chrome'
 cask 'gpg-suite'
-cask 'helo'
+cask 'hazel'
 cask 'homebrew/cask-drivers/elgato-stream-deck'
 cask 'imageoptim'
 cask 'insomnia'
-cask 'pastebot'
-cask 'phpmon'
+cask 'jdownloader'
+cask 'meetingbar'
+cask 'moom'
+cask 'moneymoney'
 cask 'phpstorm'
 cask 'ray'
 cask 'screenflow'
@@ -69,9 +80,9 @@ cask 'tableplus'
 cask 'telegram-desktop'
 cask 'the-unarchiver'
 cask 'tinkerwell'
+cask 'todoist'
 cask 'transmit'
 cask 'tunnelbear'
-cask 'tuple'
 cask 'visual-studio-code'
 cask 'zoom'
 
@@ -95,5 +106,5 @@ mas 'Keynote', id: 409183694
 mas 'Numbers', id: 409203825
 mas 'Spark', id: 1176895641
 mas 'Speedtest', id: 1153157709
-mas 'Things', id: 904280696
 mas 'Tweetbot', id: 1384080005
+mas 'Day One', id: 1055511498
